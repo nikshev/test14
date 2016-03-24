@@ -1,0 +1,168 @@
+/* Lists, Overlays, Borders, Margins, Floats, Aligns. */
+.ul, ol, li {
+    margin: 0px;
+    padding: 0px;
+}
+
+.no-style {
+    list-style-type: none;
+}
+
+.inline {
+    display: inline;
+}
+
+.margin-small {
+    margin: 5px;
+}
+
+.margin-default {
+    margin: 10px;
+}
+
+.margin-large {
+    margin: 20px;
+}
+
+.margin-top {
+    margin-top: 10px;
+}
+
+.margin-top-large {
+    margin-top: 20px;
+}
+
+.margin-left {
+    margin-left: 10px;
+}
+
+.margin-left-large {
+    margin-left: 20px;
+}
+
+.margin-right {
+    margin-right: 10px;
+}
+
+.margin-right-large {
+    margin-right: 20px;
+}
+
+.margin-bottom {
+    margin-bottom: 10px;
+}
+
+.margin-bottom-large {
+    margin-bottom: 20px;
+}
+
+.clearfix {
+    clear: all;
+}
+
+.clear-left {
+    clear: left;
+}
+
+.pull-left {
+    float: left;
+}
+
+.pull-right {
+    float: right;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+.border-right {
+    border-right: 1px solid #e6e6e6;
+}
+
+body {
+    background: #f2f2f2;
+}
+
+header {
+    background: #2E3647;
+    color: #FCFCFD;
+}
+header h1, header h2, header h3, header h4, header h5, header h6 {
+    color: #FCFCFD;
+}
+header .active {
+    border-right: 5px solid #2EC4FF;
+    background: #242a38;
+}
+header .site {
+    background: #384256;
+}
+header .site .brand {
+    padding: 15px;
+    border-top: 5px solid #2EC4FF;
+}
+header .profile {
+    padding: 0px;
+}
+header .profile .avatar {
+    border-radius: 5px;
+}
+header nav {
+    /* unvisited link */
+    /* visited link */
+    /* mouse over link */
+    /* selected link */
+}
+header nav a {
+    text-decoration: none;
+}
+header nav a:link {
+    color: #FFFFFF;
+}
+header nav a:visited {
+    color: #FFFFFF;
+}
+header nav a:hover {
+    color: #FFFFFF;
+}
+header nav a:active {
+    color: #FFFFFF;
+}
+header nav ul li {
+    font-size: 120%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+}
+header nav ul li:hover {
+    background: #282f3e;
+}
+
+.content-header {
+    background: #FFFFFF;
+    padding: 13px;
+}
+
+.content {
+    background: #FFFFFF;
+    margin-top: 30px;
+    padding: 30px;
+    border: 1px solid #e6e6e6;
+}
+.content .error-hero {
+    background: #fafafa;
+    padding: 15px;
+    border: 1px solid #ebebeb;
+}
+.content .error-hero .title {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #cccccc;
+}
+.content .stats .uk-button {
+    background: #FFF;
+}
