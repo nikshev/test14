@@ -13,12 +13,14 @@ class Patients extends Model
      * @param $user_id
      * @return bool
      */
-    public static function CheckInvitation($user_id){
+    public static function CheckInvitation($patient_id){
         try {
-            if (isset($user_id) && intval($user_id)) {
-                $patient = self::where('user_id', $user_id)->find();
-                if (isset($patient))
+            if (isset($patient_id) && intval($patient_id)>0) {
+                $patient = self::find($patient_id);
+                if (isset($patient->user_id)&&intval($patient->user_id)>0) {
+                    \Log::error('Patient_user_id=' . self::varDumpToString($patient->user_id));
                     return true;
+                }
             }
         } catch (Exception $ex){
             \Log::error('Patients->CheckInvitation Caught exception:' . $ex->getMessage());
@@ -34,7 +36,7 @@ class Patients extends Model
      */
     public static function GetPatientNameById($patient_id){
         try {
-            if (isset($patient_id) && intval($patient_id)) {
+            if (isset($patient_id) && intval($patient_id)>0) {
                 $patient = self::find($patient_id);
                 return $patient->name;
             }
@@ -51,7 +53,7 @@ class Patients extends Model
      */
     public static function GetPatientEmailById($patient_id){
         try {
-            if (isset($patient_id) && intval($patient_id)) {
+            if (isset($patient_id) && intval($patient_id)>0) {
                 $patient = self::find($patient_id);
                 return $patient->email;
             }
@@ -68,7 +70,7 @@ class Patients extends Model
      */
     public static function GetPatientIdByUserId($user_id){
         try {
-            if (isset($user_id) && intval($user_id)) {
+            if (isset($user_id) && intval($user_id)>0) {
                 $patient = self::where('user_id', $user_id)->find();
                 if (isset($patient))
                     return $patient[0]->id;
@@ -87,7 +89,7 @@ class Patients extends Model
     public static function GetUserIdByPatientId($patient_id){
         try {
 
-            if (isset($patient_id) && intval($patient_id)) {
+            if (isset($patient_id) && intval($patient_id)>0) {
                 $patient = self::find($patient_id);
                 //\Log::error('Patient=' . self::varDumpToString($patient));
                 if (isset($patient))

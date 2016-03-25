@@ -10,6 +10,7 @@ $dashboard_js_version=uniqid();
 ?>
 
 {!! Html::script('assets/js/jquery-1.12.0.min.js') !!}
+{!! Html::script('assets/js/jquery-ui.js') !!}
 {!! Html::style('assets/css/uikit.min.css') !!}
 {!! Html::script('assets/js/uikit.min.js') !!}
 {!! Html::script('assets/js/spin.min.js') !!}
@@ -73,7 +74,7 @@ $dashboard_js_version=uniqid();
                        <a data-patientid="{{$data_row->id}}" class="view-rep" href="#">{{\Lang::get('message.View reports')}}</a>
                    </td>
                    <td>
-                       @if (\App\Reports::GetReportsByUserId($user->id))
+                       @if (!\App\Patients::CheckInvitation($data_row->id))
                          <a data-patientid="{{$data_row->id}}" class="send-inv" href="#">{{\Lang::get('message.Send invitation')}}</a>
                        @else
                            <a data-patientid="{{$data_row->id}}" class="send-inv" href="#">{{\Lang::get('message.Re-send invitation')}}</a>

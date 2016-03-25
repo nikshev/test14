@@ -1,7 +1,22 @@
 /**
  * Created by eugene on 2/12/16.
  */
+
 jQuery(document).ready(function(){
+
+    // Only change the inputs
+    $('.ui-autocomplete-input').css('fontSize', '10px');
+    $('.ui-autocomplete-input').css('width','300px');
+
+    $("#q").autocomplete({
+        source: '/autocomplete',
+        minLentgh: 1,
+        select: function(event,ui){
+            $("#q").val(ui.item.id);
+            $("#email").val(ui.item.email);
+        }
+    });
+
 
 
     var opts = {
@@ -34,31 +49,6 @@ jQuery(document).ready(function(){
     });
 
 
-    //Search by ajax request
-    $("#search-button").on('click',function(e){
-        e.preventDefault();
-        e.stopPropagation();
-        var report_search_target = jQuery("#reports-search-result");
-        var book_search_spinner = new Spinner(opts).spin();
-        book_search_target.append(book_search_spinner.el);
-        var book_search_form =jQuery("#search-form").serialize();
-        jQuery.ajax({
-            method: "POST",
-            data: book_search_form,
-            url: "/booksearch",
-            success: function(data) {
-                // console.log(data);
-                book_search_spinner.stop();
-                jQuery("#book-search-result").html(data);
-            },
-            error: function (request, status, error) {
-                console.log(error);
-                console.log(status);
-                console.log(request.responseText);
-                book_search_spinner.stop();
-            }
-        });
-    });
 
  $('a[class="send-inv"]').each(function() {
      $(this).on('click', function (e) {
@@ -76,7 +66,6 @@ jQuery(document).ready(function(){
                  console.log(error);
                  console.log(status);
                  console.log(request.responseText);
-                 book_search_spinner.stop();
              }
          });
      });

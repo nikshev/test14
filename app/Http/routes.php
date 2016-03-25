@@ -28,6 +28,7 @@ Route::group(['middleware' => ['web']], function () {
 
     // Authentication routes...
     Route::get('auth/login', 'Auth\AuthController@getLogin');
+    Route::get('auth/ulogin','Auth\AuthController@getUlogin');
     Route::post('auth/login', 'Auth\AuthController@postLogin');
     Route::get('auth/logout', 'Auth\AuthController@getLogout');
 
@@ -52,4 +53,5 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('/reports', 'DashboardController@Reports');
     Route::get('/pdfreport','DashboardController@PDFReport');
     Route::get('/sendbymail','DashboardController@SendByMail');
+    Route::get('/autocomplete','DashboardController@Autocomplete');
 });

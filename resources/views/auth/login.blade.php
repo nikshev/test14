@@ -5,10 +5,13 @@
  * Date: 2/10/16
  * Time: 3:18 PM
  */
+$dashboard_js_version=uniqid();
 ?>
 {!! Html::script('assets/js/jquery-1.12.0.min.js') !!}
 {!! Html::style('assets/css/uikit.min.css') !!}
 {!! HTML::script('assets/js/uikit.min.js') !!}
+{!! Html::script('assets/js/jquery-ui.js') !!}
+{!! Html::script('assets/js/dashboard.js?v='.$dashboard_js_version) !!}
 <head>
     <title>{!! \Lang::get('auth.Login title') !!}</title>
 </head>
@@ -26,9 +29,15 @@
             </div>
         @endif
         <div class="uk-form-row">
-            <label class="uk-form-label" for="form-h-it">{!! \Lang::get('auth.Login') !!}</label>
+            <label class="uk-form-label" for="name">{!! \Lang::get('auth.Name') !!}</label>
             <div class="uk-form-controls">
-                <input type="email" name="email" value="{{ old('email')}}"  id="form-h-it" placeholder="{!! \Lang::get('auth.Login') !!}" style="cursor: auto; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABHklEQVQ4EaVTO26DQBD1ohQWaS2lg9JybZ+AK7hNwx2oIoVf4UPQ0Lj1FdKktevIpel8AKNUkDcWMxpgSaIEaTVv3sx7uztiTdu2s/98DywOw3Dued4Who/M2aIx5lZV1aEsy0+qiwHELyi+Ytl0PQ69SxAxkWIA4RMRTdNsKE59juMcuZd6xIAFeZ6fGCdJ8kY4y7KAuTRNGd7jyEBXsdOPE3a0QGPsniOnnYMO67LgSQN9T41F2QGrQRRFCwyzoIF2qyBuKKbcOgPXdVeY9rMWgNsjf9ccYesJhk3f5dYT1HX9gR0LLQR30TnjkUEcx2uIuS4RnI+aj6sJR0AM8AaumPaM/rRehyWhXqbFAA9kh3/8/NvHxAYGAsZ/il8IalkCLBfNVAAAAABJRU5ErkJggg=='); background-attachment: scroll; background-position: 100% 50%; background-repeat: no-repeat;">
+                <input type="text" id="q">
+            </div>
+        </div>
+        <div class="uk-form-row">
+            <label class="uk-form-label" for="email">{!! \Lang::get('auth.Login') !!}</label>
+            <div class="uk-form-controls">
+                <input type="email" name="email" value="{{ old('email')}}"  id="email" placeholder="{!! \Lang::get('auth.Login') !!}" style="cursor: auto; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABHklEQVQ4EaVTO26DQBD1ohQWaS2lg9JybZ+AK7hNwx2oIoVf4UPQ0Lj1FdKktevIpel8AKNUkDcWMxpgSaIEaTVv3sx7uztiTdu2s/98DywOw3Dued4Who/M2aIx5lZV1aEsy0+qiwHELyi+Ytl0PQ69SxAxkWIA4RMRTdNsKE59juMcuZd6xIAFeZ6fGCdJ8kY4y7KAuTRNGd7jyEBXsdOPE3a0QGPsniOnnYMO67LgSQN9T41F2QGrQRRFCwyzoIF2qyBuKKbcOgPXdVeY9rMWgNsjf9ccYesJhk3f5dYT1HX9gR0LLQR30TnjkUEcx2uIuS4RnI+aj6sJR0AM8AaumPaM/rRehyWhXqbFAA9kh3/8/NvHxAYGAsZ/il8IalkCLBfNVAAAAABJRU5ErkJggg=='); background-attachment: scroll; background-position: 100% 50%; background-repeat: no-repeat;">
             </div>
         </div>
         <div class="uk-form-row">

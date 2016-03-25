@@ -41,7 +41,7 @@ return [
     'Report Name'=>'Report Name',
     'Invitation sent successfully'=>'Invitation sent successfully',
     'You are invited on site'=>'You are invited on site http://test.com',
-    'You are can login by url'=>'You are can login by url http://test.com/userlogin',
+    'You are can login by url'=>'You are can login by url http://test.com/auth/login',
     'User name:'=>'User name:',
     'Password:'=>'Password:',
 ];

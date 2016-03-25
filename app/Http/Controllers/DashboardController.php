@@ -158,5 +158,20 @@ class DashboardController extends BaseController
           return view('dashboard',['user'=>\Auth::user()]);
   }
 
+    /**
+     * Auto complete feature
+     * @param Request $request
+     * @return string
+     */
+    public function Autocomplete(Request $request){
+        $term=$request->input('term');
+        $results=array();
+
+        $patients=\App\Patients::whereRaw("name LIKE '%".$term."%' AND user_id>0")->get();
+        foreach ($patients as $patient){
+            $results[]=['id'=>$patient->id,'value'=>$patient->name,'email'=>$patient->email];
+        }
+         return json_encode($results);
+    }
 
 }
