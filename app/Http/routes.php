@@ -52,5 +52,4 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('/reports', 'DashboardController@Reports');
     Route::get('/pdfreport','DashboardController@PDFReport');
     Route::get('/sendbymail','DashboardController@SendByMail');
-    Route::get('/test', 'DashboardController@test'); //Hard code
 });

@@ -1,4 +1,6 @@
 <?php
+use Illuminate\Support\Facades\Session;
+use Symfony\Component\HttpFoundation\Request;
 
 class TestCase extends Illuminate\Foundation\Testing\TestCase
 {
@@ -22,4 +24,5 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase
 
         return $app;
     }
+
 }

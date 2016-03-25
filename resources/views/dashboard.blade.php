@@ -32,7 +32,7 @@ $dashboard_js_version=uniqid();
 <div style="float:left; padding-top:2px; margin-left:-223px;">
     <a  href="auth/logout">{!! \Lang::get('auth.Logout') !!}</a>
 </div>
-@if (intval($user->type)===0)
+@if (intval($user->type)>0)
  <?php $data=Patients::All();?>
  <div class="uk-width-large-2-8 uk-container-center">
     <div  id="patients-search-result">
@@ -76,7 +76,7 @@ $dashboard_js_version=uniqid();
                        @if (\App\Reports::GetReportsByUserId($user->id))
                          <a data-patientid="{{$data_row->id}}" class="send-inv" href="#">{{\Lang::get('message.Send invitation')}}</a>
                        @else
-                           {{\Lang::get('message.Invitation already sent')}}
+                           <a data-patientid="{{$data_row->id}}" class="send-inv" href="#">{{\Lang::get('message.Re-send invitation')}}</a>
                        @endif
                    </td>
                </tr>
@@ -88,7 +88,7 @@ $dashboard_js_version=uniqid();
 @endif
 <div class="uk-width-large-2-8 uk-container-center">
   <div  id="reports-search-result">
-    @if (intval($user->type)>0)
+    @if (intval($user->type)===0)
      <?php $data=\App\Reports::GetReportsByUserId($user->id); ?>
      <?php $patient_id=\App\Reports::GetPatientIdByUserId($user->id); ?>
      <?php echo view('reports',['data'=>$data,'patient_id'=>$patient_id]); ?>

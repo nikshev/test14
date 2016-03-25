@@ -6,4 +6,4 @@
  * Time: 3:54 PM
  */
 ?>
-{!! \Lang::get('messages.Good day') !!}
+{!! \Lang::get('message.Good day') !!}

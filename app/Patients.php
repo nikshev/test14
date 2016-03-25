@@ -14,10 +14,14 @@ class Patients extends Model
      * @return bool
      */
     public static function CheckInvitation($user_id){
-        if (isset($user_id)&&intval($user_id)) {
-            $patient=self::where('user_id',$user_id)->find();
-            if (isset($patient))
-                return true;
+        try {
+            if (isset($user_id) && intval($user_id)) {
+                $patient = self::where('user_id', $user_id)->find();
+                if (isset($patient))
+                    return true;
+            }
+        } catch (Exception $ex){
+            \Log::error('Patients->CheckInvitation Caught exception:' . $ex->getMessage());
         }
 
         return false;
@@ -29,9 +33,13 @@ class Patients extends Model
      * @return string
      */
     public static function GetPatientNameById($patient_id){
-        if (isset($patient_id)&&intval($patient_id)) {
-            $patient=self::find($patient_id);
-            return $patient->name;
+        try {
+            if (isset($patient_id) && intval($patient_id)) {
+                $patient = self::find($patient_id);
+                return $patient->name;
+            }
+        } catch (Exception $ex){
+            \Log::error('Patients->GetPatientNameById Caught exception:' . $ex->getMessage());
         }
         return "";
     }
@@ -42,20 +50,64 @@ class Patients extends Model
      * @return string
      */
     public static function GetPatientEmailById($patient_id){
-        if (isset($patient_id)&&intval($patient_id)) {
-            $patient=self::find($patient_id);
-            return $patient->email;
+        try {
+            if (isset($patient_id) && intval($patient_id)) {
+                $patient = self::find($patient_id);
+                return $patient->email;
+            }
+        } catch (Exception $ex){
+            \Log::error('Patients->GetPatientEmailById Caught exception:' . $ex->getMessage());
         }
         return "";
     }
 
+    /**
+     * Get Patient Id By UserId
+     * @param $user_id
+     * @return int
+     */
     public static function GetPatientIdByUserId($user_id){
-        if (isset($user_id)&&intval($user_id)) {
-            $patient=self::where('user_id',$user_id)->find();
-            if (isset($patient))
-                return $patient[0]->id;
+        try {
+            if (isset($user_id) && intval($user_id)) {
+                $patient = self::where('user_id', $user_id)->find();
+                if (isset($patient))
+                    return $patient[0]->id;
+            }
+        } catch (Exception $ex){
+            \Log::error('Patients->GetPatientIdByUserId Caught exception:' . $ex->getMessage());
         }
-
         return -1;
+    }
+
+    /**
+     * Get UserId By Patient Id
+     * @param $patient_id
+     * @return int
+     */
+    public static function GetUserIdByPatientId($patient_id){
+        try {
+
+            if (isset($patient_id) && intval($patient_id)) {
+                $patient = self::find($patient_id);
+                //\Log::error('Patient=' . self::varDumpToString($patient));
+                if (isset($patient))
+                    return $patient->user_id;
+            }
+        } catch (Exception $ex){
+            \Log::error('Patients->GetUserIdByPatientId Caught exception:' . $ex->getMessage());
+        }
+        return -1;
+    }
+
+    /**
+     * Var dump to string
+     * @param $var
+     * @return string
+     */
+    private static function varDumpToString($var) {
+        ob_start();
+        var_dump($var);
+        $result = ob_get_clean();
+        return $result;
     }
 }

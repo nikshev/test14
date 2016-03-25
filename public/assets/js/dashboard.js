@@ -70,7 +70,7 @@ jQuery(document).ready(function(){
              data: {patient_id:$patient_id},
              url: "/invitation",
              success: function(data) {
-                 // console.log(data);
+                 alert(data);
              },
              error: function (request, status, error) {
                  console.log(error);

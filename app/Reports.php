@@ -24,7 +24,9 @@ class Reports extends Model
             } else
                 $patients = null;
             if (!is_null($patients)) {
-                $patient_id = $patients[0]->id;
+                $patient_id=-1;
+                if (isset($patients[0]))
+                    $patient_id = $patients[0]->id;
                 $reports = self::where('patient_id', $patient_id)->get();
             }
         } catch (Exception $ex){
@@ -65,5 +67,38 @@ class Reports extends Model
             \Log::error('Reports->GetReportByReportId Caught exception:' . $ex->getMessage());
         }
         return $report;
+    }
+
+    /**
+     * Get Patient id by user id
+     * @param $user_id
+     * @return int
+     */
+    public static function GetPatientIdByUserId($user_id){
+        $patient_id=-1;
+        try {
+            if (intval($user_id) > 0) {
+                $patients = \App\Patients::where('user_id', $user_id)->get();
+            } else
+                $patients = null;
+            if (!is_null($patients)) {
+                $patient_id = $patients[0]->id;
+            }
+        } catch (Exception $ex){
+            \Log::error('Reports->GetPatientIdByUserId Caught exception:' . $ex->getMessage());
+        }
+        return $patient_id;
+    }
+
+    /**
+     * Var dump to string
+     * @param $var
+     * @return string
+     */
+    private static function varDumpToString($var) {
+        ob_start();
+        var_dump($var);
+        $result = ob_get_clean();
+        return $result;
     }
 }
